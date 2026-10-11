@@ -1,18 +1,40 @@
 :root {
+  /* Colors */
   --color-bg: #f3f1ea;
   --color-bg-secondary: #e9e6dc;
 
   --color-white: #ffffff;
-
   --color-text: #111111;
   --color-text-secondary: #686861;
 
   --color-border: rgba(17, 17, 17, 0.16);
+  --color-border-strong: rgba(17, 17, 17, 0.35);
 
   --color-accent: #b8f34a;
 
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-heading: 'Instrument Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --font-size-display: clamp(3.4rem, 8vw, 8.5rem);
+  --font-size-h1: clamp(2.75rem, 6vw, 6rem);
+  --font-size-h2: clamp(2.25rem, 4.5vw, 4.5rem);
+  --font-size-h3: clamp(1.75rem, 3vw, 2.75rem);
+
+  --font-size-lg: clamp(1.125rem, 1.5vw, 1.35rem);
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-xs: 0.75rem;
+
+  /* Layout */
   --max-width: 1320px;
 
+  --section-padding: clamp(5rem, 10vw, 9rem);
+
+  /* Spacing */
+  --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -20,7 +42,18 @@
   --space-xl: 6rem;
   --space-2xl: 8rem;
 
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+
+  /* Transitions */
   --transition-fast: 180ms ease;
   --transition-normal: 300ms ease;
   --transition-slow: 600ms ease;
+
+  /* Z-index */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-drawer: 300;
 }
