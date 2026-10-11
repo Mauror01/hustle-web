@@ -1,0 +1,26 @@
+:root {
+  --color-bg: #f3f1ea;
+  --color-bg-secondary: #e9e6dc;
+
+  --color-white: #ffffff;
+
+  --color-text: #111111;
+  --color-text-secondary: #686861;
+
+  --color-border: rgba(17, 17, 17, 0.16);
+
+  --color-accent: #b8f34a;
+
+  --max-width: 1320px;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 8rem;
+
+  --transition-fast: 180ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 600ms ease;
+}
