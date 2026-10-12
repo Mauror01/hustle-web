@@ -83,30 +83,8 @@ function Hero() {
           </motion.div>
         </div>
 
-        <div className="hero__footer">
-          <span className="mono">
-            Desarrollo
-          </span>
-
-          <span className="hero__footer-line" />
-
-          <span className="mono">
-            Automatización
-          </span>
-
-          <span className="hero__footer-line" />
-
-          <span className="mono">
-            Data
-          </span>
-
-          <span className="hero__footer-line" />
-
-          <span className="mono">
-            IA
-          </span>
+        
         </div>
-      </div>
     </section>
   )
 }

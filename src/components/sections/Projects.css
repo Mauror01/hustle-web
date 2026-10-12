@@ -1,0 +1,44 @@
+.projects {
+  background: var(--color-bg);
+}
+
+.projects__header {
+  display: grid;
+  gap: 2rem;
+
+  padding-bottom: clamp(3rem, 6vw, 6rem);
+}
+
+.projects__eyebrow {
+  display: block;
+
+  margin-bottom: 1.5rem;
+
+  color: var(--color-text-secondary);
+}
+
+.projects__header > p {
+  max-width: 31rem;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-lg);
+  line-height: 1.55;
+}
+
+.projects__list {
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 900px) {
+  .projects__header {
+    grid-template-columns: 1.4fr 0.6fr;
+    align-items: end;
+
+    gap: 5rem;
+  }
+
+  .projects__header > p {
+    justify-self: end;
+  }
+}
