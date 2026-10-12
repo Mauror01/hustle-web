@@ -1,0 +1,44 @@
+.services {
+  background: var(--color-bg-secondary);
+}
+
+.services__header {
+  display: grid;
+  gap: 2rem;
+
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.services__eyebrow {
+  display: block;
+
+  margin-bottom: 1.5rem;
+
+  color: var(--color-text-secondary);
+}
+
+.services__header > p {
+  max-width: 32rem;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-lg);
+  line-height: 1.55;
+}
+
+.services__list {
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .services__header {
+    grid-template-columns: 1.4fr 0.6fr;
+    align-items: end;
+
+    gap: 5rem;
+  }
+
+  .services__header > p {
+    justify-self: end;
+  }
+}

@@ -1,0 +1,125 @@
+.service-row {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 1rem;
+
+  width: 100%;
+  padding: 1.75rem 0;
+
+  overflow: hidden;
+
+  background: transparent;
+  color: var(--color-text);
+
+  border-top: 1px solid var(--color-border);
+
+  text-align: left;
+
+  transition:
+    padding-inline var(--transition-normal),
+    background-color var(--transition-normal);
+}
+
+.service-row:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.service-row::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  background: var(--color-accent);
+
+  transform: scaleY(0);
+  transform-origin: bottom;
+
+  transition: transform var(--transition-normal);
+}
+
+.service-row:hover::before,
+.service-row:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.service-row__number {
+  padding-top: 0.55rem;
+
+  color: var(--color-text-secondary);
+
+  transition: color var(--transition-fast);
+}
+
+.service-row__content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4.75rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.service-row__content p {
+  max-width: 38rem;
+
+  margin-top: 0.75rem;
+
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+
+  transition: color var(--transition-fast);
+}
+
+.service-row__icon {
+  margin-top: 0.45rem;
+
+  transition: transform var(--transition-normal);
+}
+
+.service-row:hover .service-row__icon,
+.service-row:focus-visible .service-row__icon {
+  transform: translate(5px, -5px);
+}
+
+.service-row:hover .service-row__number,
+.service-row:hover .service-row__content p {
+  color: var(--color-text);
+}
+
+@media (min-width: 900px) {
+  .service-row {
+    grid-template-columns: 70px minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    padding-block: 2.4rem;
+  }
+
+  .service-row__content {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(280px, 0.6fr);
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .service-row__content p {
+    margin-top: 0;
+  }
+
+    .service-row > * {
+    transition:
+        transform var(--transition-normal),
+        color var(--transition-fast);
+    }
+
+    .service-row:hover > *,
+    .service-row:focus-visible > * {
+        transform: translate(18px, -10px);
+    }
+}
