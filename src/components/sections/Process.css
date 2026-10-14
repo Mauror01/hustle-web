@@ -48,12 +48,56 @@
   background: rgba(255, 255, 255, 0.18);
 }
 
+/* =========================
+   MOBILE / TABLET
+   ========================= */
+
+.process__timeline {
+  position: relative;
+  display: grid;
+}
+
+.process-step {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 1rem;
+
+  padding-bottom: 3rem;
+  padding-inline: 0;
+
+  text-align: left;
+}
+
+.process-step:last-child {
+  padding-bottom: 0;
+}
+
+.process-step:not(:last-child)::before {
+  content: '';
+
+  position: absolute;
+
+  top: 31px;
+  bottom: 0;
+  left: 15px;
+
+  width: 1px;
+
+  background: rgba(255, 255, 255, 0.18);
+}
+
 .process-step__marker {
   position: relative;
-  z-index: 1;
+
+  top: auto;
+  left: auto;
 
   display: flex;
   justify-content: flex-start;
+
+  transform: none;
 }
 
 .process-step__marker span {
@@ -62,6 +106,8 @@
 
   width: 31px;
   height: 31px;
+
+  flex-shrink: 0;
 
   background: var(--color-text);
   color: var(--color-white);
@@ -72,59 +118,47 @@
   font-family: var(--font-mono);
   font-size: 0.6rem;
 
-  transition:
-    background-color var(--transition-normal),
-    color var(--transition-normal),
-    border-color var(--transition-normal);
+  box-shadow: none;
+
+  animation: none;
 }
 
-.process-step__marker span {
-  animation-duration: 20s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
+.process-step__content {
+  min-width: 0;
 
-.process-step--1 .process-step__marker span {
-  animation-name: process-node-1;
-}
+  padding-top: 0.1rem;
 
-.process-step--2 .process-step__marker span {
-  animation-name: process-node-2;
+  text-align: left;
 }
-
-.process-step--3 .process-step__marker span {
-  animation-name: process-node-3;
-}
-
-.process-step--4 .process-step__marker span {
-  animation-name: process-node-4;
-}
-
 
 .process-step__content h3 {
+  margin: 0;
+
+  color: var(--color-white);
+
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.04em;
+
+  text-align: left;
+
+  transform: none;
+
+  animation: none;
 }
 
 .process-step__content p {
-  max-width: 28rem;
+  max-width: 30rem;
 
   margin-top: 0.8rem;
+  margin-inline: 0;
 
   color: rgba(255, 255, 255, 0.55);
 
   line-height: 1.6;
-}
-
-.process__beam {
-  display: none;
-}
-
-.process {
-  --process-marker-size: 31px;
+  text-align: left;
 }
 
 .process__track,
@@ -132,15 +166,7 @@
   display: none;
 }
 
-.process-step {
-  text-align: center;
-  padding-inline: clamp(1rem, 2vw, 2rem);
-}
-
-.process-step__content p {
-  margin-top: 1rem;
-  margin-inline: auto;
-}
+/* Desktop */
 
 @media (min-width: 900px) {
   .process__header {
@@ -218,7 +244,7 @@
 
     transform: translateX(-50%);
 
-    animation: process-beam-travel 20s ease-in-out infinite;
+    
     will-change: left, opacity;
   }
 
@@ -247,6 +273,48 @@
 
   .process-step__content p {
     margin-top: 1rem;
+  }
+
+    .process__beam-glow {
+    animation: process-beam-travel 20s ease-in-out infinite;
+  }
+
+  .process-step__marker span {
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  .process-step--1 .process-step__marker span {
+    animation-name: process-node-1;
+  }
+
+  .process-step--2 .process-step__marker span {
+    animation-name: process-node-2;
+  }
+
+  .process-step--3 .process-step__marker span {
+    animation-name: process-node-3;
+  }
+
+  .process-step--4 .process-step__marker span {
+    animation-name: process-node-4;
+  }
+
+  .process-step--1 .process-step__content h3 {
+    animation: process-title-1 20s linear infinite;
+  }
+
+  .process-step--2 .process-step__content h3 {
+    animation: process-title-2 20s linear infinite;
+  }
+
+  .process-step--3 .process-step__content h3 {
+    animation: process-title-3 20s linear infinite;
+  }
+
+  .process-step--4 .process-step__content h3 {
+    animation: process-title-4 20s linear infinite;
   }
 }
 
@@ -446,21 +514,6 @@
     transform var(--transition-normal);
 }
 
-.process-step--1 .process-step__content h3 {
-  animation: process-title-1 20s linear infinite;
-}
-
-.process-step--2 .process-step__content h3 {
-  animation: process-title-2 20s linear infinite;
-}
-
-.process-step--3 .process-step__content h3 {
-  animation: process-title-3 20s linear infinite;
-}
-
-.process-step--4 .process-step__content h3 {
-  animation: process-title-4 20s linear infinite;
-}
 
 @keyframes process-title-1 {
   0%, 2%, 13%, 100% {

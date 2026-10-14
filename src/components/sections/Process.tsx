@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import './Process.css'
 
 const steps = [
@@ -28,6 +29,25 @@ const steps = [
 ]
 
 function Process() {
+    
+    const [isDesktop, setIsDesktop] = useState(
+        () => window.matchMedia('(min-width: 900px)').matches,
+    )
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(min-width: 900px)')
+
+        const handleChange = (event: MediaQueryListEvent) => {
+            setIsDesktop(event.matches)
+        }
+
+        mediaQuery.addEventListener('change', handleChange)
+
+        return () => {
+            mediaQuery.removeEventListener('change', handleChange)
+        }
+    }, [])
+
   return (
     <section className="process section">
       <div className="container">
@@ -43,12 +63,25 @@ function Process() {
           </h2>
         </div>
 
-        <div className="process__timeline">
-            <div className="process__track" aria-hidden="true" />
+        <div
+            className="process__timeline"
+            key={isDesktop ? 'desktop' : 'mobile'}
+        >
+    {isDesktop && (
+        <>
+            <div
+                className="process__track"
+                aria-hidden="true"
+            />
 
-            <div className="process__beam" aria-hidden="true">
+            <div
+                className="process__beam"
+                aria-hidden="true"
+            >
                 <span className="process__beam-glow" />
             </div>
+        </>
+        )}
 
             {steps.map((step, index) => (
                 <article

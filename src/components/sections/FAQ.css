@@ -1,0 +1,32 @@
+.faq {
+  background: var(--color-bg-secondary);
+}
+
+.faq__layout {
+  display: grid;
+  gap: 4rem;
+}
+
+.faq__eyebrow {
+  display: block;
+
+  margin-bottom: 1.5rem;
+
+  color: var(--color-text-secondary);
+}
+
+.faq__heading {
+  align-self: start;
+}
+
+@media (min-width: 900px) {
+  .faq__layout {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(4rem, 8vw, 8rem);
+  }
+
+  .faq__heading {
+    position: sticky;
+    top: 130px;
+  }
+}
