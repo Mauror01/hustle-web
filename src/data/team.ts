@@ -4,33 +4,36 @@ export type TeamMember = {
   description: string
   skills: string[]
   initials: string
+  linkedin: string
 }
 
 export const team: TeamMember[] = [
   {
-    name: 'Mateo Ferraro',
-    role: 'Desarrollo & Automatización',
+    name: 'Mauro Rios',
+    role: 'Desarrollo / Análisis de datos',
+    linkedin: 'https://www.linkedin.com/in/mauroriosvega/',
     description:
-      'Full-stack developer enfocado en sistemas web, integraciones y automatización de procesos.',
+      'Full-stack developer enfocado en sistemas web, integraciones y analisis de datos',
     skills: [
+      'Python',
       'React',
       'Node',
-      'APIs',
-      'Automation',
+      'N8N',
+      'SQL',
     ],
-    initials: 'MF',
+    initials: 'MR',
   },
   {
-    name: 'Clara Molina',
-    role: 'Data & Producto',
+    name: 'Agustin Herrera',
+    role: 'Gestión / Liderazgo de Proyectos',
+    linkedin: 'https://www.linkedin.com/in/agustin-herrera-030527254/',
     description:
-      'Analista orientada al diseño de productos digitales, análisis de datos y experiencias centradas en usuarios.',
+      'Gestión de proyectos, liderazgo de equipos y desarrollo de estrategias de negocio',
     skills: [
-      'Data',
-      'UX',
-      'Analytics',
-      'Product',
+      'Gestión de Proyectos',
+      'Liderazgo de Equipos',
+      'Estrategias de Negocio',
     ],
-    initials: 'CM',
+    initials: 'AH',
   },
 ]

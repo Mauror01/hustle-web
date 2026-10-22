@@ -1,12 +1,88 @@
 .about {
+  position: relative;
+
   background: var(--color-bg);
 }
 
-.about__intro {
-  display: grid;
-  gap: 3rem;
+/* =========================
+   INTRO / PORTADA
+   ========================= */
 
-  padding-bottom: clamp(4rem, 8vw, 7rem);
+.about__intro-screen {
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 100svh;
+
+  overflow: hidden;
+
+  background: var(--color-bg);
+
+  border-bottom: 1px solid var(--color-border);
+
+  isolation: isolate;
+}
+
+.about__intro {
+  position: relative;
+
+  display: grid;
+  gap: 4rem;
+
+  width: 100%;
+
+  padding-block: clamp(7rem, 12vh, 10rem);
+}
+
+.about__pattern {
+  position: absolute;
+
+  inset: -8%;
+
+  z-index: -1;
+
+  background-image: url('../../assets/images/patron.png');
+  background-size: cover;
+  background-position: center;
+
+  opacity: 0.2;
+
+  pointer-events: none;
+
+  animation: topographic-drift 18s ease-in-out infinite alternate;
+
+  will-change: transform;
+}
+
+.about__intro-screen::after {
+  content: '';
+
+  position: absolute;
+
+  top: 5%;
+  right: 3%;
+
+  z-index: -1;
+
+  width: clamp(280px, 35vw, 520px);
+  height: clamp(280px, 35vw, 520px);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(184, 243, 74, 0.12) 0%,
+      rgba(184, 243, 74, 0.05) 35%,
+      transparent 70%
+    );
+
+  filter: blur(30px);
+
+  pointer-events: none;
 }
 
 .about__eyebrow {
@@ -36,6 +112,14 @@
   font-size: var(--font-size-lg);
   line-height: 1.55;
 }
+
+
+.about__team-section {
+  padding-block: var(--section-padding);
+
+  background: var(--color-bg);
+}
+
 
 /* Team */
 
@@ -114,15 +198,40 @@
   letter-spacing: -0.08em;
 }
 
-.team-member__visual svg {
+.team-member__visual-link {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
-  transition: transform var(--transition-normal);
+  display: grid;
+  place-items: center;
+
+  width: 48px;
+  height: 48px;
+
+  color: var(--color-text);
+
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
-.team-member:hover .team-member__visual svg {
-  transform: translate(4px, -4px);
+.team-member__visual-link svg {
+  transition: transform var(--transition-fast);
+}
+
+.team-member__visual-link:hover {
+  background: var(--color-text);
+  color: var(--color-white);
+
+  transform: translate(3px, -3px);
+}
+
+.team-member__visual-link:hover svg {
+  transform: translate(2px, -2px);
 }
 
 .team-member__content {
@@ -137,6 +246,35 @@
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.045em;
+}
+
+.team-member__name-link {
+  position: relative;
+
+  display: inline-block;
+}
+
+.team-member__name-link::after {
+  content: '';
+
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+
+  height: 2px;
+
+  background: var(--color-accent);
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  transition: transform var(--transition-normal);
+}
+
+.team-member__name-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .team-member__header .mono {
@@ -180,7 +318,7 @@
 @media (min-width: 900px) {
   .about__intro {
     grid-template-columns: 1.2fr 0.8fr;
-    align-items: end;
+    align-items: center;
   }
 
   .about__statement {
@@ -213,5 +351,45 @@
 
   .team-member__visual {
     min-height: 420px;
+  }
+}
+
+@keyframes topographic-drift {
+  0% {
+    transform:
+      translate3d(
+        calc(-1.5% + var(--mouse-x)),
+        calc(-1% + var(--mouse-y)),
+        0
+      )
+      scale(1.04);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        calc(1% + var(--mouse-x)),
+        calc(1.5% + var(--mouse-y)),
+        0
+      )
+      scale(1.07);
+  }
+
+  100% {
+    transform:
+      translate3d(
+        calc(1.5% + var(--mouse-x)),
+        calc(-1% + var(--mouse-y)),
+        0
+      )
+      scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__pattern {
+    transition: filter 300ms ease;
+    animation: none;
+    transform: scale(1.05);
   }
 }

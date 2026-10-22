@@ -11,16 +11,33 @@ const navigation = [
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isHidden, setIsHidden] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
+    let lastScrollY = window.scrollY
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40)
+      const currentScrollY = window.scrollY
+
+      setIsScrolled(currentScrollY > 20)
+
+      if (currentScrollY <= 20) {
+        setIsHidden(false)
+      } else if (currentScrollY > lastScrollY) {
+        setIsHidden(true)
+      } else {
+        setIsHidden(false)
+      }
+
+      lastScrollY = currentScrollY
     }
 
     handleScroll()
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+    })
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
@@ -39,7 +56,13 @@ function Header() {
 
   return (
     <header
-      className={`header ${isScrolled ? 'header--scrolled' : ''}`}
+      className={[
+        'header',
+        isScrolled ? 'header--scrolled' : '',
+        isHidden && !menuOpen ? 'header--hidden' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
       <div className="container header__inner">
         <a
