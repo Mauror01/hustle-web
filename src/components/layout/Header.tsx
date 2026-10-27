@@ -55,11 +55,13 @@ function Header() {
   const closeMenu = () => setMenuOpen(false)
 
   return (
+  <>
     <header
       className={[
         'header',
         isScrolled ? 'header--scrolled' : '',
         isHidden && !menuOpen ? 'header--hidden' : '',
+        menuOpen ? 'header--menu-open' : '',
       ]
         .filter(Boolean)
         .join(' ')}
@@ -99,38 +101,41 @@ function Header() {
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
+    </header>
 
-      <div
-        className={`mobile-menu ${
-          menuOpen ? 'mobile-menu--open' : ''
-        }`}
+    <div
+      className={`mobile-menu ${
+        menuOpen ? 'mobile-menu--open' : ''
+      }`}
+      aria-hidden={!menuOpen}
+    >
+      <nav
+        className="container mobile-menu__nav"
+        aria-label="Navegación móvil"
       >
-        <nav
-          className="container mobile-menu__nav"
-          aria-label="Navegación móvil"
-        >
-          {navigation.map((item) => (
-            <a
-                key={item.href}
-                href={item.href}
-                onClick={closeMenu}
-            >
-                {item.label}
-            </a>
-            ))}
-
+        {navigation.map((item) => (
           <a
-            className="mobile-menu__contact"
-            href="#contacto"
+            key={item.href}
+            href={item.href}
             onClick={closeMenu}
           >
-            Hablemos
-            <span aria-hidden="true">↗</span>
+            {item.label}
           </a>
-        </nav>
-      </div>
-    </header>
-  )
+        ))}
+
+        <a
+          className="mobile-menu__contact"
+          href="#contacto"
+          onClick={closeMenu}
+        >
+          Hablemos
+          <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </div>
+  </>
+)
+
 }
 
 export default Header
