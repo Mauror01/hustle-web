@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Menu, X } from 'lucide-react'
 import './Header.css'
 
 const navigation = [
@@ -92,13 +91,19 @@ function Header() {
         </a>
 
         <button
-          className="header__menu-button"
+          className={`header__menu-button ${
+            menuOpen ? 'header__menu-button--open' : ''
+          }`}
           type="button"
           aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((current) => !current)}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          <span className="menu-icon" aria-hidden="true">
+            <span className="menu-icon__line menu-icon__line--top" />
+            <span className="menu-icon__line menu-icon__line--middle" />
+            <span className="menu-icon__line menu-icon__line--bottom" />
+          </span>
         </button>
       </div>
     </header>
