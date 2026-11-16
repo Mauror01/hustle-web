@@ -1,14 +1,40 @@
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#111111"/>
-  <text
-    x="10"
-    y="47"
-    font-family="Arial, Helvetica, sans-serif"
-    font-size="46"
-    font-weight="700"
-    letter-spacing="-4"
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+>
+  <rect
+    width="64"
+    height="64"
+    rx="12"
+    fill="#111111"
+  />
+
+  <!-- H geométrica, más compacta -->
+  <path
+    d="
+      M10 15
+      H19
+      V28
+      H37
+      V15
+      H46
+      V49
+      H37
+      V36
+      H19
+      V49
+      H10
+      Z
+    "
     fill="#F3F1EA"
-  >h</text>
-  <circle cx="44" cy="44" r="3.5" fill="#B8F34A"/>
+  />
+
+  <!-- Punto circular de acento -->
+  <circle
+    cx="53"
+    cy="46.8"
+    r="5.2"
+    fill="#B8F34A"
+  />
 </svg>
